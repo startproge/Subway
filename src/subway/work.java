@@ -50,8 +50,6 @@ public class work {
 		
 		G.InitGraph(allLines);
 		new Main(G,allLines).setVisible(true);;
-		/*new FindWay().findMin("苹果园","南礼士路",G,allLines);*/
-		/*new FindWay().PrintLine("1号线", allLines);*/
 		
 	}
 

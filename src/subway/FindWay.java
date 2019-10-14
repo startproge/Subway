@@ -37,7 +37,8 @@ public class FindWay {
 			throw new Exception("起点不存在");
 		if(end==-1)
 			throw new Exception("终点不存在");	
-		
+		if(start==end)
+			throw new Exception("起点和终点不能相同");	
 		ArrayList<String> result=new ArrayList<String>();
 		if(start!=-1&&end!=-1) {
 			int count=0;
@@ -49,22 +50,17 @@ public class FindWay {
 				temp=path[temp][end];
 			}
 			outList.add(G.getAllStations().get(temp));
-			result.add(Integer.toString(outList.size()));
-			
-			//System.out.println(outList.size());
-			result.add(outList.get(0).getName());
-			//System.out.println(outList.get(0).getName());
+			result.add(Integer.toString(outList.size()));	
+			result.add(outList.get(0).getName());	
 			for(int i=1;i<outList.size()-1;i++) {	
-				result.add(outList.get(i).getName());
-				//System.out.println(outList.get(i).getName());
+				result.add(outList.get(i).getName());	
 				if(outList.get(i).isChangeStation()==true) {
 					String res=IsChangeLine(outList.get(i-1).getName(),outList.get(i).getName(),outList.get(i+1).getName(),allLines);
 					if(res!=null)
 						result.add(res);
-						//System.out.println("换乘"+result);
+						
 				}
-			}
-			//System.out.println(outList.get(outList.size()-1).getName());		
+			}	
 			result.add(outList.get(outList.size()-1).getName());
 			
 		}
